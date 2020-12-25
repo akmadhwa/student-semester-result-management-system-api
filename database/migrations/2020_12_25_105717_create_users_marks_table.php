@@ -21,7 +21,7 @@ class CreateUsersMarksTable extends Migration
             $table->integer('grade');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
             $table->foreign('subject_id')->references('id')->on('subjects');
         });
     }

@@ -1,13 +1,14 @@
 <?php
- namespace App\Traits;
+namespace App\Traits;
 
+use Illuminate\Http\Request;
 
 trait RespondsWithHttpStatus
 
 {
     protected function success($message, $data = [], $status = 200)
     {
-        return response([
+        return response()->json([
             'success' => true,
             'data' => $data,
             'message' => $message,
@@ -16,7 +17,7 @@ trait RespondsWithHttpStatus
 
     protected function failure($message, $status = 422)
     {
-        return response([
+        return response()->json([
             'success' => false,
             'message' => $message,
         ], $status);
