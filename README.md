@@ -54,6 +54,7 @@ run the following command to seed the database with dummy content.
 
 #### User
 
+-   POST `/login` - log in route to get the token for you to access the protected route.
 -   GET `/api/v1/user` - get user details for current logged in user
 -   GET `/api/v1/user/semester-result/:semester` - get user semester result
 
