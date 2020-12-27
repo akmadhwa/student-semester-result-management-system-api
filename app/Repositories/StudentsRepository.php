@@ -16,23 +16,47 @@ class StudentsRepository
 
     public function getStudent($userId)
     {
-        return User::findOrFail($userId)
+        return User::where('id', $userId)
             ->where('roles', config('constants.roles.student'))
+            ->first();
     }
 
-    public function getSemesterTakenByStudents($studentId)
-    {
-        return User_Mark::select('semester')
-            ->where('user_id', $studentId)
-            ->distinct()
+    public function createNewStudent(
+        $email,
+        $password,
+        $name,
+        $studentRegistrationNumber
+    ) {
+        $user = new User();
+
+        $user->name = $name;
+        $user->email = $email;
+        $user->password = bcrypt($password);
+        $user->student_registration_number = $studentRegistrationNumber;
+
+        $user->save();
+
+        return $user;
     }
 
-    public function getStudentResultBySemester($userId, $semester)
+    public function editStudent(
+        $id,
+        $email,
+        $name,
+        $studentRegistrationNumber
+    ) {
+        $student = $this->getStudent($id);
+
+        $student->email = $email ?? $student->email;
+        $student->name = $name ?? $student->name;
+        $student->student_registration_number = $studentRegistrationNumber ?? $student->student_registration_number;
+
+        $student->save();
+    }
+
+    public function deleteStudent($id)
     {
-        return User_Mark::with('subject')
-            ->where('user_id', $userId)
-            ->where('semester_id', $semester)
-            ->get()
-            ->pluck('subject.name', 'grade');
+        return $this->getStudent($id)
+            ->delete();
     }
 }

@@ -13,6 +13,8 @@ class User_Mark extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     protected $table = 'users_marks';
 
     public function subject() {
