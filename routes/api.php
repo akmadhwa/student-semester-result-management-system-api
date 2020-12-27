@@ -36,6 +36,7 @@ Route::group(['prefix' => 'v1', 'middleware' => ['auth:api']], function () {
 
         // only for admin route
         Route::group(['middleware' => ['isAdmin']], function () {
+            Route::get('/', [StudentController::class, 'getStudentList']);
             Route::post('/', [StudentController::class, 'createStudent']);
             Route::patch('/{id}', [StudentController::class, 'editStudent']);
             Route::delete('/{id}', [StudentController::class, 'deleteStudent']);

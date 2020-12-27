@@ -24,6 +24,22 @@ class StudentController extends Controller
         $this->studentRepository = $studentRepository;
     }
 
+    public function getStudentList()
+    {
+        try {
+            $studentsList = $this->studentRepository->getStudentsList();
+
+            return $this->success(
+                "",
+                $studentsList
+            );
+        } catch (\Throwable $th) {
+            $this->failure(
+                "error",
+            );
+        }
+    }
+
     public function createStudent(CreateStudentRequest $request)
     {
         try {
