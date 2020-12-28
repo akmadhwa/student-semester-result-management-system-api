@@ -55,8 +55,10 @@ run the following command to seed the database with dummy content.
 #### User
 
 -   POST `/login` - log in route to get the token for you to access the protected route.
+-   POST `/logout` - log out the user and revoke the token
 -   GET `/api/v1/user` - get user details for current logged in user
 -   GET `/api/v1/user/semester-result/:semester` - get user semester result
+-   GET `/api/v1/user/semester` - get user semester list
 
 #### Managing the students
 
@@ -81,4 +83,7 @@ Need admin role to access this endpoint
     -   DELETE `/api/v1/student/:student_id/semester/:semester_id` - Delete student semester result.
     -   PATCH `/api/v1/student/:student_id/semester/:semester_id/subject/:subject_id` - Update student result by semester subject
 
-Here is the postman collection that you can refer and import to your postman client. [Postman Collection](https://www.getpostman.com/collections/ce960f1376ac16ce17bc)
+Here is the postman collection that you can refer and import to your postman client.
+
+-   [Postman Collection](https://www.getpostman.com/collections/ce960f1376ac16ce17bc)
+-   [Postman Docs](https://documenter.getpostman.com/view/7832515/TVsyekMR)
