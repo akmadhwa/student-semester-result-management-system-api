@@ -10,7 +10,9 @@ class StudentsMarksRepository
 {
     public function getSemesterTakenByStudents($studentId)
     {
-        return User_Mark::where('user_id', $studentId)
+        return User_Mark::select('semester')
+            ->where('user_id', $studentId)
+            ->groupBy('semester')
             ->get()
             ->pluck('semester');
     }
