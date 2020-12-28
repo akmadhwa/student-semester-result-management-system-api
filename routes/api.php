@@ -20,6 +20,7 @@ use App\Http\Controllers\api\UserController;
 */
 
 Route::post('login', [AuthController::class, 'login']);
+Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:api');
 
 Route::group(['prefix' => 'v1', 'middleware' => ['auth:api']], function () {
 
@@ -27,6 +28,7 @@ Route::group(['prefix' => 'v1', 'middleware' => ['auth:api']], function () {
 
     Route::get('user', [UserController::class, 'getUserInfo']); // get user info
     Route::get('user/semester-result/{semester}', [UserController::class, 'getUserSemesterResult']); // get user info
+    Route::get('user/semester/', [UserController::class, 'getUserSemesterList']); // get semester list
 
     Route::group([
         'prefix' => 'student',

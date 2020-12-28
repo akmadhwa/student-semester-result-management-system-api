@@ -27,4 +27,15 @@ class AuthController extends Controller
             'error'=> true,
         ], 401);
     }
+
+    public function logout()
+    {
+        $user = Auth::user()->token();
+        $user->revoke();
+
+        return response()->json([
+            'success'=> true,
+            "message" => 'Logged Out'
+        ]);
+    }
 }
