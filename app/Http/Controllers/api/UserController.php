@@ -28,8 +28,7 @@ class UserController extends Controller
 
     public function getUserSemesterResult($semester)
     {
-        // try {
-
+        try {
             $result = $this->studentMarkRepository->getStudentResultBySemester(
                 auth()->id(),
                 $semester
@@ -40,10 +39,29 @@ class UserController extends Controller
                 $result
 
             );
-        // } catch (\Throwable $th) {
-        //     return $this->failure(
-        //         "error"
-        //     );
-        // }
+        } catch (\Throwable $th) {
+            return $this->failure(
+                "error"
+            );
+        }
+    }
+
+    public function getUserSemesterList()
+    {
+        try {
+            $result = $this->studentMarkRepository->getSemesterTakenByStudents(
+                auth()->id(),
+            );
+
+            return $this->success(
+                "",
+                $result
+
+            );
+        } catch (\Throwable $th) {
+            return $this->failure(
+                "error"
+            );
+        }
     }
 }
