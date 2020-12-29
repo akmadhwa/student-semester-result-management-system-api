@@ -50,6 +50,10 @@ run the following command to seed the database with dummy content.
 
 ###### `php artisan serve`
 
+### Database Design
+
+![Database Design](https://raw.githubusercontent.com/akmadhwa/student-semester-result-management-system-api/master/public/Images/student-management-system-ERD.png?raw=true)
+
 ### API EndPoints
 
 #### User
@@ -87,3 +91,16 @@ Here is the postman collection that you can refer and import to your postman cli
 
 -   [Postman Collection](https://www.getpostman.com/collections/ce960f1376ac16ce17bc)
 -   [Postman Docs](https://documenter.getpostman.com/view/7832515/TVsyekMR)
+
+#### Credentials for login
+
+I have made some dummy account for you to login
+
+1. Admin
+    - email : admin@example.com
+    - password : password
+1. Student
+    - email : akma@example.com
+    - password : password
+    - email : Ali@example.com
+    - password : password
