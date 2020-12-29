@@ -10,7 +10,7 @@ class StudentsRepository
 {
     public function getStudentsList()
     {
-        return User::select(['id', 'name'])
+        return User::select(['id', 'name', 'student_registration_number'])
             ->where('roles', config('constants.roles.student'))
             ->get();
     }

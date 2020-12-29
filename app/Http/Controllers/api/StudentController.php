@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateStudentRequest;
 use App\Http\Requests\EditStudentRequest;
 use App\Repositories\StudentsRepository;
+use App\Repositories\StudentsMarksRepository;
 use App\Traits\RespondsWithHttpStatus;
 
 
@@ -16,12 +17,15 @@ class StudentController extends Controller
     use RespondsWithHttpStatus;
 
     private $studentRepository;
+    private $studentMarkRepository;
 
     public function __construct(
-        StudentsRepository $studentRepository
+        StudentsRepository $studentRepository,
+        StudentsMarksRepository $studentMarkRepository
     ) {
 
         $this->studentRepository = $studentRepository;
+        $this->studentMarkRepository = $studentMarkRepository;
     }
 
     public function getStudentList()
@@ -124,4 +128,24 @@ class StudentController extends Controller
             );
         }
     }
+
+    public function getStudentSemester($student_id)
+    {
+        try {
+            $result = $this->studentMarkRepository->getSemesterTakenByStudents(
+                $student_id,
+            );
+
+            return $this->success(
+                "",
+                $result
+
+            );
+        } catch (\Throwable $th) {
+            return $this->failure(
+                "error"
+            );
+        }
+    }
+
 }
