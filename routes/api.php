@@ -34,7 +34,6 @@ Route::group(['prefix' => 'v1', 'middleware' => ['auth:api']], function () {
         'prefix' => 'student',
     ], function () {
 
-        Route::get('/{id}/semester/{semester_id}', [StudentMarkController::class, 'getResultBySemester']); // return all result for semester
 
         // only for admin route
         Route::group(['middleware' => ['isAdmin']], function () {
@@ -43,6 +42,7 @@ Route::group(['prefix' => 'v1', 'middleware' => ['auth:api']], function () {
             Route::patch('/{id}', [StudentController::class, 'editStudent']);
             Route::delete('/{id}', [StudentController::class, 'deleteStudent']);
 
+            Route::get('/{id}/semester/{semester_id}', [StudentMarkController::class, 'getResultBySemester']); // return all result for semester
             Route::get('/semester/{student_id}', [StudentController::class, 'getStudentSemester']); // get students semester
 
             Route::post('/semester', [StudentMarkController::class, 'insertSubjectMarkToSemester']); // add new semester and subject marks
