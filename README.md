@@ -82,6 +82,7 @@ Need admin role to access this endpoint
     -   PATCH `/api/v1/student/:student_id` - Update student
 
 -   Student Result
+    -   GET `/api/v1/student/:student_id/semester` - Get student semester list
     -   GET `/api/v1/student/:student_id/semester/:semester_id` - Get student result by semester.
     -   POST `/api/v1/student/semester` - Add new semester result to student
     -   DELETE `/api/v1/student/:student_id/semester/:semester_id` - Delete student semester result.
