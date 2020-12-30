@@ -53,7 +53,7 @@ class StudentsMarksRepository
         int $student_id,
         int $semester
     ) {
-        return User_MarK::where('user_id', $student_id)
+        return User_Mark::where('user_id', $student_id)
             ->where('semester', $semester)
             ->delete();
     }
@@ -71,7 +71,7 @@ class StudentsMarksRepository
 
     public function deleteSubjectResultBySemester($studentId, $semester, $subjectId)
     {
-        return User_MarK::where('user_id', $student_id)
+        return User_Mark::where('user_id', $studentId)
             ->where('semester', $semester)
             ->where('subject_id', $subjectId)
             ->delete();
