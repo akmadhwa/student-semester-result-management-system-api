@@ -22,8 +22,8 @@ class StudentsMarksRepository
         return User_Mark::with('subject')
             ->where('user_id', $userId)
             ->where('semester', $semester)
-            ->get()
-            ->pluck('grade', 'subject.name');
+            ->get(['subject_id', 'grade']);
+            // ->pluck('grade', 'subject.name');
     }
 
     public function insertNewSubjectMarkBySemester(
